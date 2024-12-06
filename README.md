@@ -20,9 +20,7 @@ An AI-powered REST API built using FastAPI and Hugging Face Transformers to prov
 ### 2. Question Answering Endpoint
 - **Endpoint**: `/answer`
 - **Method**: `POST`
-- **Description**: Takes a user question and context, processes it using a pre-trained AI model, and returns the answer with a confidence score.
-
-This endpoint originally used the distilbert-base-uncased-distilled-squad model, which gave a confidence level of 0.52. To improve performance, we switched to the bert-large-uncased-whole-word-masking-finetuned-squad model, increasing the confidence level to 0.72 for the same input.
+- **Description**: Takes a user question and context, processes it using a pre-trained AI model, and returns the answer with a confidence score. This endpoint originally used the distilbert-base-uncased-distilled-squad model, which gave a confidence level of 0.52. To improve performance, we switched to the bert-large-uncased-whole-word-masking-finetuned-squad model, increasing the confidence level to 0.72 for the same input.
 
 - **Request Body**: 
 ```json
