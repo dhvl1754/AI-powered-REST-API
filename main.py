@@ -76,14 +76,23 @@ def submit_feedback(feedback: Feedback):
 
 @app.post("/answer")
 def get_answer(query: Query):
-    if not query.question.strip():
-        raise HTTPException(status_code=400, detail="Question cannot be empty")
-    if not query.context.strip():
-        raise HTTPException(status_code=400, detail="Context cannot be empty")
-    result = qa_pipeline(question=query.question, context=query.context)
-    log_query(query.question, query.context, result["answer"], result["score"])
-    return {
-        "question": query.question,
-        "answer": result["answer"],
-        "confidence": result["score"]
-    }
+    try:
+        # Log the incoming request for debugging
+        print(f"Received question: {query.question}")
+        print(f"Received context: {query.context}")
+
+        # Process the query using the model
+        result = qa_pipeline(question=query.question, context=query.context)
+
+        # Return the result
+        return {
+            "question": query.question,
+            "answer": result["answer"],
+            "confidence": result["score"]
+        }
+    except Exception as e:
+        # Log the exception for debugging
+        print(f"Error: {e}")
+        # Return a user-friendly error message
+        raise HTTPException(status_code=500, detail="An internal error occurred while processing the request.")
+

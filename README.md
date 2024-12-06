@@ -35,7 +35,7 @@ This endpoint originally used the distilbert-base-uncased-distilled-squad model,
   {
     "question": "What are the store hours?",
     "answer": "9 AM to 9 PM",
-    "confidence": 0.72
+    "confidence": 0.73
   }
 
 ### 3. Feedback Collection Endpoint
